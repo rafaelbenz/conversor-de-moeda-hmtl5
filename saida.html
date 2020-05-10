@@ -13,9 +13,7 @@
 			
 			function carregaResposta(){
 	
-				var oUrl = new URL(location.href);
-				var sValorOrigem = oUrl.searchParams.get("valor_origem");
-				console.log(sValorOrigem);
+				
 				
 			}
 			
@@ -26,6 +24,12 @@
 				var oJSON = JSON.parse(sResponseBody);
 				var sReais = oJSON.rates.BRL;
 				console.log(sReais);
+				
+				var oUrl = new URL(location.href);
+				var sValorOrigem = oUrl.searchParams.get("valor_origem");
+				console.log(sValorOrigem);
+				
+				document.querySelector("#valor_destino").value = sReais * sValorOrigem;
 			}
 			
 			function chamaAPI(){
@@ -49,7 +53,7 @@
          <input type="text" value="BRL" disabled>
          <br />
          <label>Valor de destino</label>
-         <input type="number" disabled >
+         <input id="valor_destino" type="number" disabled >
          
            <button type="button" onclick="voltar()">
          	Voltar
